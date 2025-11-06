@@ -1,0 +1,121 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+body {
+    padding: 0;
+    margin: 0;
+    max-width: 100dvw;
+    max-height: 100vh;
+    background-color: whitesmoke;
+}
+.header {
+    position: sticky;
+    display: flex;
+    background-color: whitesmoke;
+    width: 100dvw;
+    height: 10vh;
+    box-shadow: 0px 0px 5px 2px grey;
+    justify-content: space-between;
+    align-items: center;
+}
+    .header_left{
+        display: flex;
+        width: 15vw;
+        height: auto;
+        align-items: center;
+        justify-content: center;
+    }
+        .mem_name{
+             font-size: 20px;
+            font-family: "Lucida Console", monospace;
+        }
+        
+    .header_right{
+        display: flex;
+        width: auto;
+        height: auto;
+    }
+        .time{
+            font-family: "Lucida Console", monospace;
+        }
+        .dark_mode{
+            font-family: "Lucida Console", monospace;
+        }
+.main_body{
+    background-color:rgba(54, 53, 53, 0.241); ;
+    display: flex;
+    position: absolute;
+    left: 10%;
+    top: 13%;
+     margin-left: -5px;
+    margin-top: -5px;
+    min-height: 20vh;
+    width: 80dvw;
+    height: auto;
+    flex-direction: row;
+    align-items: center;
+    align-content: center;
+}
+.child{
+    position: relative;
+    display: flex;
+    background-color: black;
+    height: 15vh;
+    width: 10vw;
+    left:5%;
+    
+
+}
+.button_child{
+    position: relative;
+    display: flex;
+    background-color: rgb(87, 83, 83);
+    height: 15vh;
+    width: 10vw;
+    left:2%;
+}
