@@ -4,9 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+    <script src="DARKMODE.js" defer></script>
     <title>Memories pin</title>
 </head>
-<body>
+<body class="dark_mode">
     <div class="header">
         <div class="header_left">
             <div class="name">
@@ -15,10 +16,12 @@
         </div>
         <div class="header_right">
             <div class="time">
-                
+                <p>Time:</p>
+                <div id="time">00:00:00</div>
+                <script src="time.js"></script>
             </div>
-            <div class="dark_mode">
-
+            <div class="dark_toggle">
+                <button type="button" id="darkmode">DARK MODE</button>
             </div>
         </div>
     </div>
