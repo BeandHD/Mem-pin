@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="text.css">
     
-    <script src="DARKMODE.js" defer></script>
-    <script src="object.js" defer></script>
-    <script src="time.js" defer></script>
+    <script src="../Main/DARKMODE.js" defer></script>
+    <script src="../Main/time.js" defer></script>
+    <script src="pageloading.js" defer></script>
     <title>Memories Pin - Text Editor</title>
 </head>
 <body>
@@ -19,7 +19,7 @@
 
         <nav class="header_middle">
             <a class="selectables" href="../About/About.html">About</a>
-            <span class="selectables">BOARD</span>
+            <a class="selectables" href="../Main/Main.html">BOARD</a>
         </nav>
 
         <div class="header_right">
@@ -35,10 +35,17 @@
     </header>
     <!-- Main Body / Tasks -->
      <main>
-        <div class="Task">
-            
+        <div class="Task-container">
+            <div class="Task">
+                <div class="Task-Button"><button class="Task-compl-Button"></button></div>
+                <div class="Task-Text" contenteditable="true" aria-placeholder="Type you task/tasks here"></div>
+                <div class="Task-Images">images</div>
+            </div>
         </div>
-        <button id="createTask">Create Task</button>
      </main>
+     <div class="button_container">
+     <button id="createTask" class="CreateTask">Create Task</button>
+     <button id="saveBtn" class="saveBtn">Save Task</button>
+     </div>
 </body>
 </html>

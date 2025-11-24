@@ -143,6 +143,52 @@ body {
 /* -------------------------------------------------
    Task
 -------------------------------------------------- */
+.Task-container {
+    display: flex;
+    margin-top: 10px;
+}
+.Task {
+    width: 100dvw;
+    min-height: 10vh;
+    height: auto;
+    border: 2px solid black;
+    display: flex;
+    flex-direction: row;
+}
+.Task-Button {
+    flex: 0.5;    
+    border: 1px solid red;
+}
+.Task-Text {
+    flex: 2;    
+    border: 1px solid blue;
+}
+.Task-Images {
+    flex: 8;    
+    border: 1px solid green;
+}
 /* -------------------------------------------------
    Task Button
 -------------------------------------------------- */
+.CreateTask {
+    order: 2;
+    position: relative;
+    margin-left: 10px;
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.saveBtn {
+    order: 2;
+    position: relative;
+    margin-left: 10px;
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.button_container {
+    display: flex;
+    flex-direction: row;
+}
