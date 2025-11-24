@@ -4,9 +4,41 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="text.css">
-    <title>editing page</title>
+    
+    <script src="DARKMODE.js" defer></script>
+    <script src="object.js" defer></script>
+    <script src="time.js" defer></script>
+    <title>Memories Pin - Text Editor</title>
 </head>
 <body>
-    
+     <!-- Header -->
+    <header class="header">
+        <div class="header_left">
+            <p class="mem_name">Memories pin</p>
+        </div>
+
+        <nav class="header_middle">
+            <a class="selectables" href="../About/About.html">About</a>
+            <span class="selectables">BOARD</span>
+        </nav>
+
+        <div class="header_right">
+            <div class="time">
+                <p>Time:</p>
+                <div id="time">00:00:00</div>
+            </div>
+
+            <div class="dark_toggle">
+                <button id="darkmode" type="button">Dark Mode</button>
+            </div>
+        </div>
+    </header>
+    <!-- Main Body / Tasks -->
+     <main>
+        <div class="Task">
+            
+        </div>
+        <button id="createTask">Create Task</button>
+     </main>
 </body>
 </html>

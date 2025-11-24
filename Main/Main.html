@@ -3,43 +3,61 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Memories Pin</title>
     <link rel="stylesheet" href="style.css">
+    
+
     <script src="DARKMODE.js" defer></script>
-    <script src="object.js"></script>
-    <title>Memories pin</title>
+    <script src="object.js" defer></script>
+    <script src="time.js" defer></script>
 </head>
 <body>
-    
-    <div class="header">
+
+    <!-- Header -->
+    <header class="header">
         <div class="header_left">
-            <div class="name">
-                <p class="mem_name">Memories pin</p>
-            </div>
+            <p class="mem_name">Memories pin</p>
         </div>
-        <div class="header_middle">
-            <div class="selectables">
-                <a href="About/About.html">About</a>
-            </div>
-            <div class="selectables">BOARD</div>
-            <div class="selectables">PROFILE</div>
-        </div>
+
+        <nav class="header_middle">
+            <a class="selectables" href="../About/About.html">About</a>
+            <span class="selectables">BOARD</span>
+        </nav>
+
         <div class="header_right">
             <div class="time">
                 <p>Time:</p>
                 <div id="time">00:00:00</div>
-                <script src="time.js"></script>
             </div>
+
             <div class="dark_toggle">
-                <button type="button" id="darkmode">DARK MODE</button>
+                <button id="darkmode" type="button">Dark Mode</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Popup -->
+    <div class="popup" id="pop">
+        <div class="pop-inner">
+            <h2>Name your board</h2>
+
+            <input type="text" id="boardname" placeholder="Type here...">
+
+            <div class="pop-buttons">
+                <button id="createBoard">Create</button>
+                <button id="closePop">Close</button>
             </div>
         </div>
     </div>
-    <div class="main_body" id="pagegrid">
+
+    <!-- Main Body / Grid -->
+    <main class="main_body" id="pagegrid">
         <div class="create_button">
             <div class="create_button_inner">
-                <button>+</button>
+                <button id="openpop" aria-label="Create board">+</button>
             </div>
         </div>
-    </div>
+    </main>
+
 </body>
 </html>

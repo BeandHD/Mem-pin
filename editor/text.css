@@ -1,0 +1,148 @@
+/* -------------------------------------------------
+   Global Reset (Meyer Reset 2.0)
+-------------------------------------------------- */
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font: inherit;
+    vertical-align: baseline;
+}
+
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+    display: block;
+}
+
+body {
+    line-height: 1;
+}
+
+ol, ul {
+    list-style: none;
+}
+
+blockquote, q {
+    quotes: none;
+}
+
+blockquote::before,
+blockquote::after,
+q::before,
+q::after {
+    content: '';
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+/* -------------------------------------------------
+   Root Variables
+-------------------------------------------------- */
+
+:root {
+    --background: whitesmoke;
+    --textcolor: black;
+    --opacityelement: rgba(54, 53, 53, 0.241);
+    --childbutton: gray;
+}
+
+.dark_mode {
+    --background: rgb(36, 35, 35);
+    --textcolor: white;
+    --opacityelement: rgba(105, 102, 102, 0.241);
+    --childbutton: gray;
+}
+/* -------------------------------------------------
+   Body
+-------------------------------------------------- */
+
+body {
+    padding: 0;
+    margin: 0;
+    max-width: 100dvw;
+    max-height: 100vh;
+    overflow-x: hidden;
+    background: var(--background);
+    color: var(--textcolor);
+}
+/* -------------------------------------------------
+   Header
+-------------------------------------------------- */
+
+.header {
+    position: sticky;
+    top: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100dvw;
+    height: 10vh;
+    background: var(--background);
+    box-shadow: 0 0 5px 2px grey;
+    padding: 0 2vw;
+}
+
+.header_left,
+.header_middle,
+.header_right {
+    display: flex;
+    align-items: center;
+}
+
+.header_left {
+    width: 15vw;
+    justify-content: center;
+}
+
+.mem_name {
+    font-size: 20px;
+    font-family: "Lucida Console", monospace;
+    color: var(--textcolor);
+}
+
+.header_middle {
+    width: 20vw;
+    justify-content: space-evenly;
+}
+
+.selectables {
+    font-family: "Lucida Console", monospace;
+    color: var(--textcolor);
+}
+
+.header_right {
+    width: 30vw;
+    gap: 2vw;
+}
+
+.time {
+    display: flex;
+    gap: 0.5rem;
+    font-family: "Lucida Console", monospace;
+    color: var(--textcolor);
+}
+
+.dark_toggle {
+    font-family: "Lucida Console", monospace;
+}
+/* -------------------------------------------------
+   Task
+-------------------------------------------------- */
+/* -------------------------------------------------
+   Task Button
+-------------------------------------------------- */

@@ -1,34 +1,74 @@
-const popup = document.getElementById("popup");
-document.getElementById("newPageBtn").onclick = () => popup.classList.remove("hidden");
-document.getElementById("createBtn").onclick = createPage;
+document.addEventListener('DOMContentLoaded', () => {
+    const openbtn = document.getElementById('openpop');
+    const closebtn = document.getElementById('closePop');
+    const popup = document.getElementById('pop');
+    const createBtn = document.getElementById('createBoard');
+    const grid = document.getElementById('pagegrid');
 
-function createPage() {
-  const name = document.getElementById("pageNameInput").value.trim();
-  if (!name) return;
+    if (openbtn && popup) openbtn.addEventListener('click', () => popup.classList.add('open'));
+    if (closebtn && popup) closebtn.addEventListener('click', () => popup.classList.remove('open'));
+    if (createBtn) createBtn.addEventListener('click', createboard);
 
-  const pages = JSON.parse(localStorage.getItem("pages") || "[]");
+    // initial render
+    loadboard();
 
-  const id = Date.now(); // unique page id
-  pages.push({ id, name, content: "" });
+    function createboard() {
+        const input = document.getElementById('boardname');
+        const name = input ? input.value.trim() : '';
+        if (!name) return;
+        const pages = JSON.parse(localStorage.getItem('pages') || '[]');
+        const id = Date.now();
+        pages.push({ id, name, content: '' });
+        localStorage.setItem('pages', JSON.stringify(pages));
+        if (input) input.value = '';
+        if (popup) popup.classList.remove('open');
+        loadboard();
+    }
 
-  localStorage.setItem("pages", JSON.stringify(pages));
-  popup.classList.add("hidden");
-  loadPages();
-}
-function loadPages() {
-  const pages = JSON.parse(localStorage.getItem("pages") || "[]");
-  const grid = document.getElementById("pageGrid");
-  grid.innerHTML = "";
+    function loadboard() {
+        const pages = JSON.parse(localStorage.getItem('pages') || '[]');
+        if (!grid) return;
 
-  pages.forEach(page => {
-    const tile = document.createElement("div");
-    tile.className = "pageTile";
-    tile.innerText = page.name;
-    tile.onclick = () => {
-      window.location.href = `editor.html?id=${page.id}`;
-    };
-    grid.appendChild(tile);
-  });
-}
+        // Preserve the create button tile (if present) so it doesn't disappear
+        const createTile = grid.querySelector('.create_button');
+        // Clear grid then re-append the create tile first
+        grid.innerHTML = '';
+        if (createTile) grid.appendChild(createTile);
 
-loadPages();
+        pages.forEach(page => {
+            const tile = document.createElement('div');
+            tile.className = 'page-tile';
+            tile.dataset.id = page.id;
+
+            // title label
+            const label = document.createElement('div');
+            label.className = 'page-title';
+            label.textContent = page.name;
+            tile.appendChild(label);
+
+            // delete button
+            const del = document.createElement('button');
+            del.className = 'delete-btn';
+            del.setAttribute('aria-label', 'Delete board');
+            del.textContent = '×';
+            del.addEventListener('click', (e) => {
+                e.stopPropagation();
+                const ok = confirm(`Delete board "${page.name}"?`);
+                if (!ok) return;
+                const pagesList = JSON.parse(localStorage.getItem('pages') || '[]');
+                const idx = pagesList.findIndex(p => p.id === page.id);
+                if (idx > -1) {
+                    pagesList.splice(idx, 1);
+                    localStorage.setItem('pages', JSON.stringify(pagesList));
+                    loadboard();
+                }
+            });
+            tile.appendChild(del);
+
+            // click navigates to page viewer
+            tile.addEventListener('click', () => window.location.href = `../editor/text.html?id=${page.id}`);
+
+            grid.appendChild(tile);
+        });
+    }
+});
