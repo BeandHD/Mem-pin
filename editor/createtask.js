@@ -1,5 +1,16 @@
 document.addEventListener('DOMContentLoaded', () => {
  
+    function addDeleteListeners() {
+        const mainbody = document.getElementById("mainbody");
+        const deleteButtons = mainbody.querySelectorAll('.delete-btn');
+        deleteButtons.forEach(del => {
+            del.addEventListener('click', (e) => {
+                e.stopPropagation();
+                del.parentElement.remove();
+            });
+        });
+    }
+
     function addtask(){
         const createTask = document.getElementById("createTask");
         const mainbody = document.getElementById("mainbody");
@@ -18,9 +29,19 @@ document.addEventListener('DOMContentLoaded', () => {
                             id="Editor-${taskCounter}"></div>
                     </div>
                 `;
+                const del = document.createElement('deletebutton');
+                del.className = 'delete-btn';
+                del.setAttribute('aria-label', 'Delete task');
+                del.textContent = 'x';
+                del.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    container.remove();
+                });
+                container.appendChild(del);
             mainbody.appendChild(container);   
         });
     }
 
     addtask();
+    addDeleteListeners();
 });

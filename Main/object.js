@@ -13,12 +13,15 @@ document.addEventListener('DOMContentLoaded', () => {
         const input = document.getElementById('boardname');
         const name = input ? input.value.trim() : '';
         if (!name) return;
+
         const pages = JSON.parse(localStorage.getItem('pages') || '[]');
         const id = Date.now();
+
         pages.push({ id, name, content: '' });
         localStorage.setItem('pages', JSON.stringify(pages));
         if (input) input.value = '';
         if (popup) popup.classList.remove('open');
+
         loadboard();
     }
 
@@ -36,12 +39,10 @@ document.addEventListener('DOMContentLoaded', () => {
             tile.className = 'page-tile';
             tile.dataset.id = page.id;
 
-
             const label = document.createElement('div');
             label.className = 'page-title';
             label.textContent = page.name;
             tile.appendChild(label);
-
 
             const del = document.createElement('deletebutton');
             del.className = 'delete-btn';

@@ -11,8 +11,25 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const mainbody = document.getElementById("mainbody");
         mainbody.innerHTML = page.content;
+        
+        const taskContainers = mainbody.querySelectorAll('.Task-container');
+        taskContainers.forEach(container => {
+            const del = document.createElement('deletebutton');
+            del.className = 'delete-btn';
+            del.setAttribute('aria-label', 'Delete task');
+            del.textContent = 'x';
+            del.addEventListener('click', (e) => {
+                e.stopPropagation();
+                container.remove();
+            });
+            container.appendChild(del);
+        });
+        
         document.getElementById("saveBtn").onclick = () => {
-            page.content = (mainbody.innerHTML);
+            const clone = mainbody.cloneNode(true);
+            const deleteButtons = clone.querySelectorAll('.delete-btn');
+            deleteButtons.forEach(btn => btn.remove());
+            page.content = clone.innerHTML;
             localStorage.setItem("pages", JSON.stringify(pages));
             console.log("Page saved");
         };
