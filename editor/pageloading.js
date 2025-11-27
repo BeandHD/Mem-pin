@@ -1,17 +1,19 @@
- const params = new URLSearchParams(window.location.search);
+document.addEventListener('DOMContentLoaded', () => {
+        const params = new URLSearchParams(window.location.search);
         const pageId = parseInt(params.get("id"));
 
         const pages = JSON.parse(localStorage.getItem("pages") || "[]");
         const page = pages.find(p => p.id === pageId);
+        if (!page) {
+            console.error("Page not found");
+            return;
+        }
 
-        const editor = document.getElementById("editor");
-        const pageTitle = document.getElementById("pageTitle");
-
-        pageTitle.textContent = page.name;
-        editor.innerHTML = page.content;
-
+        const mainbody = document.getElementById("mainbody");
+        mainbody.innerHTML = page.content;
         document.getElementById("saveBtn").onclick = () => {
-            page.content = editor.innerHTML;
+            page.content = (mainbody.innerHTML);
             localStorage.setItem("pages", JSON.stringify(pages));
-            alert("Saved!");
+            console.log("Page saved");
         };
+});

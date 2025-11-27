@@ -8,10 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (openbtn && popup) openbtn.addEventListener('click', () => popup.classList.add('open'));
     if (closebtn && popup) closebtn.addEventListener('click', () => popup.classList.remove('open'));
     if (createBtn) createBtn.addEventListener('click', createboard);
-
-    // initial render
-    loadboard();
-
+        loadboard();    
     function createboard() {
         const input = document.getElementById('boardname');
         const name = input ? input.value.trim() : '';
@@ -29,9 +26,8 @@ document.addEventListener('DOMContentLoaded', () => {
         const pages = JSON.parse(localStorage.getItem('pages') || '[]');
         if (!grid) return;
 
-        // Preserve the create button tile (if present) so it doesn't disappear
         const createTile = grid.querySelector('.create_button');
-        // Clear grid then re-append the create tile first
+
         grid.innerHTML = '';
         if (createTile) grid.appendChild(createTile);
 
@@ -40,17 +36,17 @@ document.addEventListener('DOMContentLoaded', () => {
             tile.className = 'page-tile';
             tile.dataset.id = page.id;
 
-            // title label
+
             const label = document.createElement('div');
             label.className = 'page-title';
             label.textContent = page.name;
             tile.appendChild(label);
 
-            // delete button
-            const del = document.createElement('button');
+
+            const del = document.createElement('deletebutton');
             del.className = 'delete-btn';
             del.setAttribute('aria-label', 'Delete board');
-            del.textContent = '×';
+            del.textContent = 'x';
             del.addEventListener('click', (e) => {
                 e.stopPropagation();
                 const ok = confirm(`Delete board "${page.name}"?`);
@@ -64,10 +60,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             });
             tile.appendChild(del);
-
-            // click navigates to page viewer
             tile.addEventListener('click', () => window.location.href = `../editor/text.html?id=${page.id}`);
-
             grid.appendChild(tile);
         });
     }
