@@ -59,6 +59,8 @@ table {
     --textcolor: black;
     --opacityelement: rgba(54, 53, 53, 0.241);
     --childbutton: gray;
+    --taskbackground: rgba(255, 255, 0, 0.288);
+    --taskcompleted: rgba(47, 255, 0, 0.288);
 }
 
 .dark_mode {
@@ -158,16 +160,25 @@ body {
     flex-direction: row;
 }
 .Task-Button {
-    flex: 0.5;    
-    border: 1px solid red;
+    flex: 0.02;
+    border: solid black 1px;    
 }
 .Task-Text {
     flex: 2;    
-    border: 1px solid blue;
 }
-.Task-Images {
-    flex: 8;    
-    border: 1px solid green;
+.Task-Text[placeholder]:empty:before {
+    content: attr(placeholder);
+    color: #555; 
+}
+
+.Task-Text[placeholder]:empty:focus:before {
+    content: "";
+}
+.task_in_progress {
+    background-color: var(--taskbackground);
+}
+.task_completed {
+    background-color: var(--taskcompleted);
 }
 /* -------------------------------------------------
    Task Button
@@ -201,9 +212,9 @@ body {
    Delete Button
 -------------------------------------------------- */
 .delete-btn {
-    position: absolute;
-    top: 3px;
-    right: 151px;
+     position: absolute;
+    top: 5px;
+    right: 152px;
     width: 22px;
     height: 22px;
     padding: 0;
@@ -215,6 +226,5 @@ body {
     line-height: 1;
     cursor: pointer;
     display: flex;
-    align-items: center;
     justify-content: center;
 }

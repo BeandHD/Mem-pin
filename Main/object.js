@@ -1,37 +1,56 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const openbtn = document.getElementById('openpop');
-    const closebtn = document.getElementById('closePop');
+
+
+    const openBtn = document.getElementById('openpop');
+    const closeBtn = document.getElementById('closePop');
     const popup = document.getElementById('pop');
     const createBtn = document.getElementById('createBoard');
     const grid = document.getElementById('pagegrid');
 
-    if (openbtn && popup) openbtn.addEventListener('click', () => popup.classList.add('open'));
-    if (closebtn && popup) closebtn.addEventListener('click', () => popup.classList.remove('open'));
-    if (createBtn) createBtn.addEventListener('click', createboard);
-        loadboard();    
-    function createboard() {
+
+    if (openBtn && popup) {
+        openBtn.addEventListener('click', () => popup.classList.add('open'));
+    }
+    if (closeBtn && popup) {
+        closeBtn.addEventListener('click', () => popup.classList.remove('open'));
+    }
+
+    if (createBtn) {
+        createBtn.addEventListener('click', createBoard);
+    }
+
+    loadBoards();
+
+    function createBoard() {
         const input = document.getElementById('boardname');
-        const name = input ? input.value.trim() : '';
-        if (!name) return;
+        const boardName = input ? input.value.trim() : '';
+        if (!boardName) return;
 
         const pages = JSON.parse(localStorage.getItem('pages') || '[]');
-        const id = Date.now();
 
-        pages.push({ id, name, content: '' });
+        const newPage = {
+            id: Date.now(),
+            name: boardName,
+            content: ''
+        };
+
+        pages.push(newPage);
         localStorage.setItem('pages', JSON.stringify(pages));
+
         if (input) input.value = '';
         if (popup) popup.classList.remove('open');
 
-        loadboard();
+        loadBoards();
     }
 
-    function loadboard() {
-        const pages = JSON.parse(localStorage.getItem('pages') || '[]');
+    function loadBoards() {
         if (!grid) return;
 
-        const createTile = grid.querySelector('.create_button');
+        const pages = JSON.parse(localStorage.getItem('pages') || '[]');
 
+        const createTile = grid.querySelector('.create_button');
         grid.innerHTML = '';
+
         if (createTile) grid.appendChild(createTile);
 
         pages.forEach(page => {
@@ -39,30 +58,42 @@ document.addEventListener('DOMContentLoaded', () => {
             tile.className = 'page-tile';
             tile.dataset.id = page.id;
 
-            const label = document.createElement('div');
-            label.className = 'page-title';
-            label.textContent = page.name;
-            tile.appendChild(label);
+            const titleEl = document.createElement('div');
+            titleEl.className = 'page-title';
+            titleEl.textContent = page.name;
+            tile.appendChild(titleEl);
 
-            const del = document.createElement('deletebutton');
-            del.className = 'delete-btn';
-            del.setAttribute('aria-label', 'Delete board');
-            del.textContent = 'x';
-            del.addEventListener('click', (e) => {
+            const delBtn = document.createElement('button');
+            delBtn.type = 'button';
+            delBtn.className = 'delete-btn';
+            delBtn.setAttribute('aria-label', 'Delete board');
+            delBtn.textContent = 'x';
+
+            delBtn.addEventListener('click', (e) => {
                 e.stopPropagation();
-                const ok = confirm(`Delete board "${page.name}"?`);
-                if (!ok) return;
-                const pagesList = JSON.parse(localStorage.getItem('pages') || '[]');
-                const idx = pagesList.findIndex(p => p.id === page.id);
-                if (idx > -1) {
-                    pagesList.splice(idx, 1);
-                    localStorage.setItem('pages', JSON.stringify(pagesList));
-                    loadboard();
-                }
+                deleteBoard(page.id, page.name);
             });
-            tile.appendChild(del);
-            tile.addEventListener('click', () => window.location.href = `../editor/text.html?id=${page.id}`);
+
+            tile.appendChild(delBtn);
+
+            tile.addEventListener('click', () => {
+                window.location.href = `../editor/text.html?id=${page.id}`;
+            });
+
             grid.appendChild(tile);
         });
     }
+
+    function deleteBoard(id, name) {
+        const confirmed = confirm(`Delete board "${name}"?`);
+        if (!confirmed) return;
+
+        const pages = JSON.parse(localStorage.getItem('pages') || '[]');
+        const updatedPages = pages.filter(p => p.id !== id);
+
+        localStorage.setItem('pages', JSON.stringify(updatedPages));
+
+        loadBoards();
+    }
+
 });
