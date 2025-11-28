@@ -3,17 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Memories Pin</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="text.css">
     
-
-    <script src="DARKMODE.js" defer></script>
-    <script src="object.js" defer></script>
-    <script src="time.js" defer></script>
+    <script src="../Main/DARKMODE.js" defer></script>
+    <script src="../Main/time.js" defer></script>
+    <script src="pageloading.js" defer></script>
+    <script src="createtask.js" defer></script>
+    <title>Memories Pin - Text Editor</title>
 </head>
 <body>
-
-    <!-- Header -->
+     <!-- Header -->
     <header class="header">
         <div class="header_left">
             <p class="mem_name">Tasker</p>
@@ -21,7 +20,7 @@
 
         <nav class="header_middle">
             <a class="selectables" href="../About/About.html">ABOUT</a>
-            <a class="selectables">BOARDS</a>
+            <a class="selectables" href="../Main/Main.html">BOARDS</a>
         </nav>
 
         <div class="header_right">
@@ -39,30 +38,15 @@
         </div>
     </header>
 
-    <!-- Popup -->
-    <div class="popup" id="pop">
-        <div class="pop-inner">
-            <div class="pop-liner">
-            <h2>Name your board</h2>
-            </div>
-            <div class="pop-liner">
-                <input type="text" id="boardname" placeholder="Type here...">
-            </div>
-            <div class="pop-buttons">
-                <button id="createBoard">Create</button>
-                <button id="closePop">Close</button>
-            </div>
-        </div>
-    </div>
-
-    <!-- Main Body / Grid -->
-    <main class="main_body" id="pagegrid">
-        <div class="create_button">
-            <div class="create_button_inner">
-                <button id="openpop" aria-label="Create board">+</button>
-            </div>
-        </div>
-    </main>
-
+    <!-- Main Body / Tasks -->
+     <main id="mainbody">
+     </main>
+     <div class="button_container">
+     <button id="createTask" class="CreateTask">Create Task</button>
+     <button id="saveBtn" class="saveBtn">Save Task</button>
+     </div>
+     <div class="savetext">
+     <a class="save that shit text">P.S - always press Save</a>
+     </div>
 </body>
 </html>

@@ -1,12 +1,19 @@
-// Attach the toggle to the dark mode button and toggle the class on <body>
-const btn = document.getElementById('darkmode');
-if (btn) {
-   btn.addEventListener('click', toggleDark);
+let darkmode = localStorage.getItem('darkmode')
+const themeSwitch = document.getElementById('darkmode-switch')
+
+const enableDarkmode = () => {
+  document.body.classList.add('darkmode')
+  localStorage.setItem('darkmode', 'active')
 }
 
-function toggleDark(e){
-   if (e) e.stopPropagation();
-   const element = document.body;
-   element.classList.toggle('dark_mode');
-   element.classList.toggle('light_mode');
+const disableDarkmode = () => {
+  document.body.classList.remove('darkmode')
+  localStorage.setItem('darkmode', null)
 }
+
+if(darkmode === "active") enableDarkmode()
+
+themeSwitch.addEventListener("click", () => {
+  darkmode = localStorage.getItem('darkmode')
+  darkmode !== "active" ? enableDarkmode() : disableDarkmode()
+})

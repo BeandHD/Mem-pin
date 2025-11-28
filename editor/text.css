@@ -50,17 +50,17 @@ table {
     border-collapse: collapse;
     border-spacing: 0;
 }
-
 /* -------------------------------------------------
    Root Variables
 -------------------------------------------------- */
 
 :root {
     --background: whitesmoke;
-    --basevariant: #f0f0f0;
     --textcolor: black;
     --opacityelement: rgba(54, 53, 53, 0.241);
     --childbutton: gray;
+    --taskbackground: rgba(255, 255, 0, 0.288);
+    --taskcompleted: rgba(47, 255, 0, 0.288);
 }
 
 .darkmode {
@@ -69,11 +69,9 @@ table {
     --opacityelement: rgba(105, 102, 102, 0.241);
     --childbutton: gray;
 }
-
 /* -------------------------------------------------
    Body
 -------------------------------------------------- */
-
 body {
     padding: 0;
     margin: 0;
@@ -84,7 +82,6 @@ body {
     color: var(--textcolor);
     font-family: "Lucida Console", monospace;
 }
-
 /* -------------------------------------------------
    Header
 -------------------------------------------------- */
@@ -116,6 +113,7 @@ body {
 
 .mem_name {
     font-size: 20px;
+    font-family: "Lucida Console", monospace;
     color: var(--textcolor);
 }
 
@@ -151,9 +149,6 @@ body {
   justify-content: center;
   align-items: center;
 }
-#darkmode-switch svg{
-  fill: var(--textcolor);
-}
 #darkmode-switch svg:last-child{
   display: none;
 }
@@ -164,84 +159,72 @@ body {
   display: block;
 }
 /* -------------------------------------------------
-   Main
+   Task
 -------------------------------------------------- */
-
-.main_body {
-    position: absolute;
-    top: 13%;
-    left: 10%;
-    width: 80dvw;
-    min-height: 20vh;
+.Task-container {
     display: flex;
-    flex-wrap: wrap; /* allow tiles to wrap */
-    gap: 12px;
-    align-items: flex-start;
-    background: var(--opacityelement);
-    padding: 1rem;
-}
-/* --------------------------------------------------
-    popup
----------------------------------------------------- */
-.popup {
-    opacity: 0;
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    left: 0;
-    bottom: 0;
-    transition: all 0.3s ease-in-out;
-    z-index: -1;
-    display: flex;
-    align-items:center ;
-    justify-content: center;
-
-}
-.popup.open{
-    opacity: 1;
-    z-index: 999;
-}
-.pop-liner{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
     margin-top: 10px;
+    justify-content: center;
+    position: relative;
+}
+.Task {
+    width: 80dvw;
+    min-height: 10vh;
+    height: auto;
+    border: 2px solid black;
+    display: flex;
+    flex-direction: row;
+}
+.Task-Button {
+    flex: 0.02;
+    border: solid black 1px;    
+}
+.Task-Text {
+    flex: 2;    
+}
+.Task-Text[placeholder]:empty:before {
+    content: attr(placeholder);
+    color: #555; 
 }
 
-.pop-inner{
-    background-color: bisque;
-    height: 20vh;
-    width: 10dvw;
-    color: var(--textcolor);
-    font-family: "Lucida Console", monospace;
+.Task-Text[placeholder]:empty:focus:before {
+    content: "";
 }
-.popup{
-    display: none;
-    position: fixed;
-    inset: 0;
+.task_in_progress {
+    background-color: var(--taskbackground);
+}
+.task_completed {
+    background-color: var(--taskcompleted);
+}
+/* -------------------------------------------------
+   Task Button
+-------------------------------------------------- */
+.CreateTask {
+    order: 2;
+    position: relative;
+    margin-left: 10px;
+    margin-top: 10px;
+    display: flex;
     align-items: center;
     justify-content: center;
-    background: rgba(0,0,0,0.45);
-    z-index: 999;
+    margin-left: 150px;
 }
-.popup.open{ display:flex; }
-.popup .pop-inner{
-    background: var(--background);
-    color: var(--textcolor);
-    padding: 16px;
-    border-radius: 8px;
-    min-width: 280px;
-}
-.pop-buttons{ 
-    display:flex; 
-    gap:8px; 
-    justify-content:center; 
-    height: 30px;
+.saveBtn {
+    order: 2;
+    position: relative;
+    margin-left: 10px;
     margin-top: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
-.pop-buttons button{
-    flex:1;
+.button_container {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 40px;
+}
+.button_container button{
     padding: 6px 12px;
     border:none;
     border-radius: 4px;
@@ -249,75 +232,19 @@ body {
     color: var(--textcolor);
     cursor: pointer;
 }
-input[type="text"]{
-    width: 100%;
-    height: 30px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    font-size: 16px;
-    font-family: "Lucida Console", monospace;
+.savetext{
+    margin-left: 145px;
+    margin-top: 10px;
+    font-size: 20px;
     color: var(--textcolor);
-    background: var(--background);
 }
-
 /* -------------------------------------------------
-   Create Board Button
+   Delete Button
 -------------------------------------------------- */
-.create_button {
-    order: -1;
-    margin: 8px;
-    min-height: 14vh;
-    min-width: 8vw;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: #e6e6e6;
-    border-radius: 8px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.12);
-}
-
-.create_button_inner { 
-    display:flex;
-     align-items:center; 
-     justify-content:center; 
-     width:100%; 
-     height:100%; }
-
-.create_button_inner button{
-    font-size: 2rem;
-    width: 100%;
-    height: 100%;
-    border-radius: 6px;
-    border:none;
-    background: transparent;
-    color: #333;
-    cursor: pointer;
-}
-
-
-.page-tile{
-    padding: 10px 14px;
-    margin: 8px;
-    background: var(--childbutton);
-    color: var(--textcolor);
-    border-radius: 6px;
-    min-height: 12vh;
-    min-width: 5vw;
-    text-align: center;
-    cursor: pointer;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.12);
-    position: relative; 
-    display: flex; 
-    align-items: center; 
-    justify-content: center; 
-}
-.page-tile .page-title { 
-    padding: 6px 8px; 
-}
-.delete-btn{
-    position: absolute;
-    top: 6px;
-    right: 6px;
+.delete-btn {
+     position: absolute;
+    top: 5px;
+    right: 152px;
     width: 22px;
     height: 22px;
     padding: 0;
@@ -326,4 +253,6 @@ input[type="text"]{
     background: #d9534f;
     color: #fff;
     cursor: pointer;
+    display: flex;
+    justify-content: center;
 }
