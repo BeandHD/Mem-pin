@@ -9,14 +9,15 @@
     <title>About</title>
 </head>
 <body>
-     <header class="header">
+    <!-- Header -->
+    <header class="header">
         <div class="header_left">
-            <p class="mem_name">Memories pin</p>
+            <p class="mem_name">Tasker</p>
         </div>
 
         <nav class="header_middle">
-            <a class="selectables" href="../About/About.html">About</a>
-            <a class="selectables" href="../Main/Main.html">BOARD</a>
+            <a class="selectables">ABOUT</a>
+            <a class="selectables" href="../Main/Main.html">BOARDS</a>
         </nav>
 
         <div class="header_right">
@@ -26,28 +27,35 @@
             </div>
 
             <div class="dark_toggle">
-                <button id="darkmode" type="button">Dark Mode</button>
+                <button id="darkmode-switch">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"><path d="M480-120q-150 0-255-105T120-480q0-150 105-255t255-105q14 0 27.5 1t26.5 3q-41 29-65.5 75.5T444-660q0 90 63 153t153 63q55 0 101-24.5t75-65.5q2 13 3 26.5t1 27.5q0 150-105 255T480-120Z"/></svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"><path d="M480-280q-83 0-141.5-58.5T280-480q0-83 58.5-141.5T480-680q83 0 141.5 58.5T680-480q0 83-58.5 141.5T480-280ZM200-440H40v-80h160v80Zm720 0H760v-80h160v80ZM440-760v-160h80v160h-80Zm0 720v-160h80v160h-80ZM256-650l-101-97 57-59 96 100-52 56Zm492 496-97-101 53-55 101 97-57 59Zm-98-550 97-101 59 57-100 96-56-52ZM154-212l101-97 55 53-97 101-59-57Z"/></svg>   
+                </button>
             </div>
         </div>
     </header>
+    <!-- Main Body -->
     <main>
-        <h1>About Memories Pin</h1>
-        <p>Memories Pin is a web application designed to help users organize their thoughts, tasks, and ideas in a visually appealing and efficient manner. With a focus on simplicity and usability, Memories Pin allows users to create boards and text-based tasks that can be easily managed and accessed.</p>
-
+        <div class="about_section">
+            <h1>About Memories Pin</h1>
+            <p>Memories Pin is a web application designed to help users organize their thoughts, tasks, and ideas in a visually appealing and efficient manner. With a focus on simplicity and usability, Memories Pin allows users to create boards and text-based tasks that can be easily managed and accessed.</p>
+        </div>
+        <div class="about_section">
         <h2>Features</h2>
-        <ul>
-            <li><strong>Board Creation:</strong> Users can create multiple boards to categorize their tasks and notes.</li>
-            <li><strong>Text Editor:</strong> Each board contains a text editor where users can create and manage their tasks with checkboxes for easy tracking.</li>
-            <li><strong>Dark Mode:</strong> A dark mode feature is available for comfortable viewing in low-light environments.</li>
-            <li><strong>Time Display:</strong> The current time is displayed in the header for user convenience.</li>
-            <li><strong>Local Storage:</strong> All data is stored locally in the browser, ensuring privacy and quick access without the need for an internet connection.</li>
-        </ul>
-
-        <h2>How to Use</h2>
-        <p>To get started with Memories Pin, simply navigate to the BOARD section to create your first board. Use the text editor to add tasks, and utilize the checkbox feature to mark tasks as complete. Customize your experience with dark mode as needed.</p>
-
-        <h2>Contact</h2>
-        <p>If you have any questions or feedback about Memories Pin, please feel free to reach out via our contact page or support email.</p>
+            <ul>
+                <li><strong>Board Creation:</strong> Users can create multiple boards to categorize their tasks and notes.</li>
+                <li><strong>Text Editor:</strong> Each board contains a text editor where users can create and manage their tasks with checkboxes for easy tracking.</li>
+                <li><strong>Dark Mode:</strong> A dark mode feature is available for comfortable viewing in low-light environments.</li>
+                <li><strong>Time Display:</strong> The current time is displayed in the header for user convenience.</li>
+                <li><strong>Local Storage:</strong> All data is stored locally in the browser, ensuring privacy and quick access without the need for an internet connection.</li>
+            </ul>
+        </div>
+        <div class="about_section">
+            <h2>How to Use</h2>
+            <p>To get started with Memories Pin, simply navigate to the BOARD section to create your first board. Use the text editor to add tasks, and utilize the checkbox feature to mark tasks as complete. Customize your experience with dark mode as needed.</p>
+        </div>
+        <footer class="about_footer">
+            <p>&copy; 2024 Memories Pin. All rights reserved.</p
     </main>
 </body>
 </html>

@@ -1,13 +1,19 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const btn = document.getElementById('darkmode');
-    if (!btn) return;
+let darkmode = localStorage.getItem('darkmode')
+const themeSwitch = document.getElementById('darkmode-switch')
 
-    const saved = localStorage.getItem('theme');
-    if (saved === 'dark') document.body.classList.add('dark_mode');
+const enableDarkmode = () => {
+  document.body.classList.add('darkmode')
+  localStorage.setItem('darkmode', 'active')
+}
 
-    btn.addEventListener('click', () => {
-        document.body.classList.toggle('dark_mode');
-        const isDark = document.body.classList.contains('dark_mode');
-        localStorage.setItem('theme', isDark ? 'dark' : 'light');
-    });
-});
+const disableDarkmode = () => {
+  document.body.classList.remove('darkmode')
+  localStorage.setItem('darkmode', null)
+}
+
+if(darkmode === "active") enableDarkmode()
+
+themeSwitch.addEventListener("click", () => {
+  darkmode = localStorage.getItem('darkmode')
+  darkmode !== "active" ? enableDarkmode() : disableDarkmode()
+})

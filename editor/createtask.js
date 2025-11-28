@@ -48,11 +48,9 @@ document.addEventListener('DOMContentLoaded', () => {
             `<button type="button" class="delete-btn" aria-label="Delete task">x</button>`;
 
         mainbody.appendChild(container);
-        // Attach listener for the newly created checkbox and set initial class
         attachCheckboxListeners(container);
     });
 
-    // Attach to any existing checkboxes on load (for tasks restored from saved content)
     attachCheckboxListeners();
 
 });

@@ -44,7 +44,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function loadBoards() {
-        if (!grid) return;
 
         const pages = JSON.parse(localStorage.getItem('pages') || '[]');
 

@@ -61,7 +61,7 @@ table {
     --childbutton: gray;
 }
 
-.dark_mode {
+.darkmode {
     --background: rgb(36, 35, 35);
     --textcolor: white;
     --opacityelement: rgba(105, 102, 102, 0.241);
@@ -70,7 +70,6 @@ table {
 /* -------------------------------------------------
    Body
 -------------------------------------------------- */
-
 body {
     padding: 0;
     margin: 0;
@@ -79,6 +78,7 @@ body {
     overflow-x: hidden;
     background: var(--background);
     color: var(--textcolor);
+    font-family: "Lucida Console", monospace;
 }
 /* -------------------------------------------------
    Header
@@ -137,6 +137,38 @@ body {
     color: var(--textcolor);
 }
 
-.dark_toggle {
-    font-family: "Lucida Console", monospace;
+#darkmode-switch{
+  height: 50px;
+  width: 50px;
+  padding: 0;
+  border-radius: 50%;
+  background-color: var(--background);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#darkmode-switch svg{
+  fill: var(--textcolor);
+}
+#darkmode-switch svg:last-child{
+  display: none;
+}
+.darkmode #darkmode-switch svg:first-child{
+  display: none;
+}
+.darkmode #darkmode-switch svg:last-child{
+  display: block;
+}
+
+.about_section {
+    margin: 20px;
+    padding: 15px;
+    border: 1px solid var(--textcolor);
+    border-radius: 8px;
+    background-color: var(--opacityelement);
+}
+.about_footer {
+    margin: 20px;
+    padding: 15px;
+    border-top: 1px solid var(--textcolor);
 }
